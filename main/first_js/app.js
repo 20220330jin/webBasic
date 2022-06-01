@@ -21,3 +21,14 @@ let job = {
 
 console.log(job);
 console.log(job.title);
+
+let adultYears = age - 18;
+console.log(adultYears)
+
+function calculateAdultYear(userAge) {
+    return userAge - 14;
+}
+
+calculateAdultYear();
+console.log(adultYears)
+console.log(calculateAdultYear(30))
