@@ -1,5 +1,6 @@
 body {
     background: linear-gradient(30deg, rgb(77,77,77), rgb(58,58,58));
+    color: rgb(68, 68, 68);
 }
 
 header {
@@ -7,7 +8,7 @@ header {
 }
 
 main ul {
-    width: 800px;
+    width: 1500px;
     margin: 0 auto;
 }
 
@@ -17,6 +18,7 @@ main li {
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
     border-radius: 6px;
     overflow: hidden;
+    width: 500px;
 }
 
 main li img {
@@ -27,13 +29,22 @@ main li img {
 
 .item-content {
     padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.action {
+    text-align: right;
 }
 
 .action a {
-    color: rgb(50, 232, 220);
+    color: rgb(22, 232, 240);
     text-decoration: none;
+    padding: 6px;
+    border-radius: 5px;
 }
 
 .action a:hover{
-    background-color: black;
+    background-color: rgb(235, 253, 255);
 }
