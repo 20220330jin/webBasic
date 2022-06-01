@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(59, 58, 68);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(200, 130, 100);
+    border: solid 5px;
+    border-color: rgb(200, 130, 100);
+}
+
+header ul {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+header li {
+    margin-left: 10px;
+}
+
+header a {
+    text-decoration: none;
+}
+
+header nav a:hover {
+    background-color: rgb(200, 130, 100);
+    color: rgb(200, 130, 100);
+}
+
+ul {
+    list-style: none;
+}
