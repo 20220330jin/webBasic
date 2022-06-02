@@ -32,3 +32,14 @@ function calculateAdultYear(userAge) {
 calculateAdultYear();
 console.log(adultYears)
 console.log(calculateAdultYear(30))
+
+console.log('------------method---------------')
+let person = {
+    name: 'Jin', // Property
+    greet() { // Method
+        alert('Hello!');
+    }
+}
+
+person.greet();
+

@@ -31,12 +31,22 @@ alert(coursePrice);
 alert(courseGoal);
 
 // 3
-let course= {
-    courseName,
-    coursePrice,
-    courseGoal
+let course = {
+    name: courseName,
+    price: coursePrice,
+    goals: courseGoal
 }
 // 4
-console.log(course.courseGoal[1]);
+console.log(course.goals[1]);
 
 // 5
+function getListItems(array, arrayIndex){
+    console.log(arrayIndex)
+    let arrayElement = array[arrayIndex];
+    return arrayElement;
+}
+
+//6
+let firstGoal = getListItems(course.goals, 0);
+
+console.log(firstGoal);
