@@ -8,9 +8,9 @@ a {
     text-decoration: none;
 }
 
-main img {
+/* main img {
     width: 400px;
-}
+} */
 
 #main-header {
     height: 80px;
@@ -47,4 +47,51 @@ main img {
     font-size: 24px;
     font-weight: bold;
     color: rgb(238, 164, 80);
+}
+
+main h1 {
+    text-align: center;
+    color: rgb(234, 164, 80);
+    font-size: 38px;
+}
+
+#latest-products {
+    width: 80%;
+    margin: 50px auto;
+}
+
+#latest-products ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.food-items {
+    background-color: rgb(228, 206, 182);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.food-items img {
+    height: 240px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.food-item-content {
+    padding: 16px;
+    text-align: center;
+}
+
+.btn {
+    background-color: rgb(228, 157, 44);
+    color: white;
+    border-radius: 4px;
+    padding: 8px 24px;
+}
+
+.btn:hover {
+    background-color: rgb(221, 134, 34);
 }
