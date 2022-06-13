@@ -35,4 +35,4 @@ let pElement = document.querySelector('.content');
 console.log(pElement);
 
 // 5
-pElement.textContent = 'HI MAN'
+// pElement.textContent = 'HI MAN'
