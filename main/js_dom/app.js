@@ -43,9 +43,15 @@ firstParagraph.append(newAnchorElement);
 // 1. Select the element that should be removed
 let firstH1Element = document.querySelector('h1');
 firstH1Element.remove();
-firstH1Element.parentElement.removeChild(firstH1Element);
+// firstH1Element.parentElement.removeChild(firstH1Element);
 
 // MOVE ELEMENTS
 
 // 1. 
 firstParagraph.parentElement.append(firstParagraph)
+
+// innerHTML
+console.log(firstParagraph.innerHTML);
+console.log(firstParagraph.textContent);
+
+firstParagraph.innerHTML = 'Hi! This is <strong>important</strong>'
