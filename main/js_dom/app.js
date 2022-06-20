@@ -6,3 +6,13 @@ function changeParagraphText(){
 }
 
 paragraphElement.addEventListener('click', changeParagraphText); // callback function
+
+let inputElement = document.querySelector('input');
+console.log(inputElement);
+
+function retrieveUserInput(){
+    let enteredText = inputElement.value;
+    console.log(enteredText);
+}
+
+inputElement.addEventListener('input',retrieveUserInput);
