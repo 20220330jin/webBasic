@@ -49,6 +49,19 @@ a {
     position: fixed;
     top: 0;
     left: 0;
+    display: none;
+}
+
+#side-drawer:target {
+    display: block;
+}
+
+#side-drawer header {
+    height: 5rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
 }
 
 #side-drawer ul {
@@ -81,6 +94,7 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    display: none;
 }
 
 .menu-btn span {
@@ -109,13 +123,13 @@ main h1 {
     list-style: none;
 }
 
-.food-items {
+.food-item {
     background-color: rgb(228, 206, 182);
     border-radius: 6px;
     overflow: hidden;
 }
 
-.food-items img {
+.food-item img {
     height: 15rem;
     width: 100%;
     object-fit: cover;
@@ -128,6 +142,10 @@ main h1 {
     /* from font size property of parent element */
     padding: 1em;
     text-align: center;
+}
+
+.food-item h2 {
+    margin: 0 0 1rem 0;
 }
 
 h2 {
@@ -155,6 +173,10 @@ h2 {
 
     #main-header nav a {
         display: none;
+    }
+
+    .menu-btn {
+        display: flex;
     }
 
     #latest-products ul {
