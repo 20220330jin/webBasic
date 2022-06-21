@@ -1,16 +1,22 @@
-const http = require('http');
+const express = require('express');
 
-function handleRequest(request, response){
-    console.log(request);
-    if(request.url === '/currenttime'){
-        response.statusCode = 200;
-        response.end('<h1>' + new Date().toISOString() + '</h1>');
-    }else if(request.url === '/'){
-        response.statusCode = 200;
-        response.end('<h1>Hello World!</h1>');
-    } 
-}
+const app = express();
 
-const server = http.createServer(handleRequest);
+app.use(express.urlencoded({extended: false}));
 
-server.listen(3000);
+app.get('/currenttime', function(req, res) {
+    res.send('<h1>' + new Date().toISOString() + '</h1>');
+}); // anonymous function
+
+app.get('/', function(req, res){
+    res.send('<form action="/store-user" method="POST"><label>YourName</label><input type="text" name="username"><button>Submit</button></form>');
+})
+
+app.post('/store-user', function(req, res){
+    const userName = req.body.username;
+    console.log(userName);
+    res.send('<h1>Username stored!</h1>')
+})
+
+app.listen(3000);
+
