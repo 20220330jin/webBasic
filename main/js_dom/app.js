@@ -10,8 +10,11 @@ paragraphElement.addEventListener('click', changeParagraphText); // callback fun
 let inputElement = document.querySelector('input');
 console.log(inputElement);
 
-function retrieveUserInput(){
-    let enteredText = inputElement.value;
+function retrieveUserInput(event){
+    // let enteredText = inputElement.value;
+    let enteredText = event.target.value;
+    console.log(event);
+    console.log(event.target);
     console.log(enteredText);
 }
 
