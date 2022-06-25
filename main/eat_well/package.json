@@ -1,12 +1,12 @@
 {
-  "name": "first_nodejs",
+  "name": "eat_well",
   "version": "1.0.0",
-  "description": "Getting start with Node & Express",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"
   },
-  "author": "Jin",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.1",

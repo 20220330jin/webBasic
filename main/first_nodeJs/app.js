@@ -12,7 +12,7 @@ app.get('/currenttime', function(req, res) {
 }); // anonymous function
 
 app.get('/', function(req, res){
-    res.send('<form action="/store-user" method="POST"><label>YourName</label><input type="text" name="username"><button>Submit</button></form>');
+    res.send('<form action="/store-user" method="POST"><label>YourName: </label><input type="text" name="username"><button>Submit</button></form>');
 })
 
 app.get('/users', function(req, res){
