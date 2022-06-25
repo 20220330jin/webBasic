@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Test",
+        "address": "Test st",
+        "cuisine": "test",
+        "website": "http://mytest.com",
+        "description": "test"
+    },
+    {
+        "name": "test2",
+        "address": "test 2 st",
+        "cuisine": "Korean",
+        "website": "https://mytest.com",
+        "description": "Korean"
+    }
+]
