@@ -26,7 +26,7 @@ app.get('/restaurants', function (req, res) {
 
     const fileData = fs.readFileSync(filePath); // json 파일이 있는 경로로 가서 해당 파일의 내용을 읽는다
     const storedRestaurants = JSON.parse(fileData); // 해당 파일의 내용을 json 형식으로 변환하여 저장한다.
-    res.render('restaurants', { numberOfRestaurants: storedRestaurants.length });
+    res.render('restaurants', { numberOfRestaurants: storedRestaurants.length, restaurants: storedRestaurants });
 });
 
 app.get('/recommend', function (req, res) {
