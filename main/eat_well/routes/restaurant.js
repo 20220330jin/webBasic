@@ -1,17 +1,28 @@
 const express = require('express');
 const router = express.Router();
+const uuid = require('uuid');
 
 const resData = require('../util/restaurant-data')
 
 router.get('/restaurants', function (req, res) {
-    // const htmlFilePath = path.join(__dirname, 'views', 'restaurants.html');
-    // res.sendFile(htmlFilePath);
-    // const filePath = path.join(__dirname, 'data', 'restaurants.json'); // data 폴더의 json 폴더의 경로를 가져온다
+    let order = req.query.order;
+    let nextOrder = 'desc';
+    if (order !== 'asc' && order !== 'desc') {
+        order = 'asc'; // default
+    }
 
-    // const fileData = fs.readFileSync(filePath); // json 파일이 있는 경로로 가서 해당 파일의 내용을 읽는다
-    // const storedRestaurants = JSON.parse(fileData); // 해당 파일의 내용을 json 형식으로 변환하여 저장한다.
+    if (order === 'desc') {
+        nextOrder = 'asc';
+    }
     const storedRestaurants = resData.getStoredRestaurants();
-    res.render('restaurants', { numberOfRestaurants: storedRestaurants.length, restaurants: storedRestaurants });
+    storedRestaurants.sort(function (resA, resB) {
+        if (order === 'asc' && resA.name > resB.name || (order === 'desc' && resB.name > resA.name)) {
+            return 1;
+        }
+        return -1;
+    });
+
+    res.render('restaurants', { numberOfRestaurants: storedRestaurants.length, restaurants: storedRestaurants, nextOrder: nextOrder });
 });
 
 router.get('/restaurants/:id', function (req, res) {
@@ -29,8 +40,6 @@ router.get('/restaurants/:id', function (req, res) {
 });
 
 router.get('/recommend', function (req, res) {
-    // const htmlFilePath = path.join(__dirname, 'views', 'recommend.html');
-    // res.sendFile(htmlFilePath);
     res.render('recommend');
 });
 
@@ -47,8 +56,6 @@ router.post('/recommend', function (req, res) {
 })
 
 router.get('/confirm', function (req, res) {
-    // const htmlFilePath = path.join(__dirname, 'views', 'confirm.html');
-    // res.sendFile(htmlFilePath);
     res.render('confirm');
 });
 
