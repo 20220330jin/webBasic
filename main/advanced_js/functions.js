@@ -1,5 +1,7 @@
 function greetUser(greetingPrefix, userName = 'user') {
     console.log(greetingPrefix + ' ' + userName);
+    // template literal
+    console.log(`${greetingPrefix} ${userName}!`);
 }
 
 greetUser('Hello');
