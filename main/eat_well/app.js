@@ -1,8 +1,10 @@
-const resData = require('./util/restaurant-data');
+// const resData = require('./util/restaurant-data');
+const defaultRoutes = require('./routes/default');
+const restaurantRoutes = require('./routes/restaurant');
 
 const uuid = require('uuid');
 
-const fs = require('fs');
+// const fs = require('fs');
 
 const path = require('path');
 
@@ -17,66 +19,8 @@ app.set('view engine', 'ejs'); // setting ejs template
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', function (req, res) {
-    // const htmlFilePath = path.join(__dirname, 'views', 'index.html');
-    // res.sendFile(htmlFilePath);
-    res.render('index'); // name of path
-});
-
-app.get('/restaurants', function (req, res) {
-    // const htmlFilePath = path.join(__dirname, 'views', 'restaurants.html');
-    // res.sendFile(htmlFilePath);
-    // const filePath = path.join(__dirname, 'data', 'restaurants.json'); // data 폴더의 json 폴더의 경로를 가져온다
-
-    // const fileData = fs.readFileSync(filePath); // json 파일이 있는 경로로 가서 해당 파일의 내용을 읽는다
-    // const storedRestaurants = JSON.parse(fileData); // 해당 파일의 내용을 json 형식으로 변환하여 저장한다.
-    const storedRestaurants = resData.getStoredRestaurants();
-    res.render('restaurants', { numberOfRestaurants: storedRestaurants.length, restaurants: storedRestaurants });
-});
-
-app.get('/restaurants/:id', function (req, res) {
-    const restaurantId = req.params.id;
-    const storedRestaurants = resData.getStoredRestaurants();
-
-    for (const restaurant of storedRestaurants) {
-        if (restaurant.id === restaurantId) {
-            return res.render('restaurants-detail', { restaurant: restaurant });
-        }
-    }
-
-    // 페이지를 찾을 수 없는 경우 반환하는 페이지, 위의 for룹에서 return이 안된 경우는 일치하는 id가 없는 경우임
-    return res.status(404).render('404');
-});
-
-app.get('/recommend', function (req, res) {
-    // const htmlFilePath = path.join(__dirname, 'views', 'recommend.html');
-    // res.sendFile(htmlFilePath);
-    res.render('recommend');
-});
-
-app.post('/recommend', function (req, res) {
-    const restaurant = req.body;
-    restaurant.id = uuid.v4();
-    const restaurants = resData.getStoredRestaurants();
-
-    restaurants.push(restaurant);
-
-    resData.storeRestaurants(restaurants);
-
-    res.redirect('/confirm');
-})
-
-app.get('/confirm', function (req, res) {
-    // const htmlFilePath = path.join(__dirname, 'views', 'confirm.html');
-    // res.sendFile(htmlFilePath);
-    res.render('confirm');
-});
-
-app.get('/about', function (req, res) {
-    // const htmlFilePath = path.join(__dirname, 'views', 'about.html');
-    // res.sendFile(htmlFilePath);
-    res.render('about');
-});
+app.use('/', defaultRoutes);
+app.use('/', restaurantRoutes);
 
 // 404 error handler
 app.use(function (req, res) {
@@ -84,7 +28,7 @@ app.use(function (req, res) {
 });
 
 // 500 error handler
-app.use(function(error, req, res, next){
+app.use(function (error, req, res, next) {
     res.status(500).render('500');
 })
 
