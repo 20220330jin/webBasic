@@ -1,10 +1,1 @@
-[
-    {
-        "name": "Tuna Friend",
-        "address": "Podown, Anyang",
-        "cuisine": "Korean",
-        "website": "https://mytest.com",
-        "description": "delicious",
-        "id": "45717400-5437-4497-a5ea-99512fa97c8d"
-    }
-]
+[{"name":"Tuna Friend","address":"Podown, Anyang","cuisine":"Korean","website":"https://mytest.com","description":"delicious","id":"45717400-5437-4497-a5ea-99512fa97c8d"},{"name":"499","address":"Bad Homburg, Deutcshland","cuisine":"Haxen","website":"https://mytest.com","description":"sunny","id":"b005f25a-6927-4559-b781-059afca05d56"}]

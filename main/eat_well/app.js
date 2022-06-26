@@ -8,9 +8,9 @@ const express = require('express');
 
 const app = express();
 
+// replace html to ejs
 app.set('views', path.join(__dirname, 'views')) // path template file
 app.set('view engine', 'ejs'); // setting ejs template
-// replace html to ejs
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
@@ -38,12 +38,15 @@ app.get('/restaurants/:id', function (req, res) {
     const fileData = fs.readFileSync(filePath); // json 파일이 있는 경로로 가서 해당 파일의 내용을 읽는다
     const storedRestaurants = JSON.parse(fileData); // 해당 파일의 내용을 json 형식으로 변환하여 저장한다.
 
-    for(const restaurant of storedRestaurants){
-        if(restaurant.id === restaurantId){
+    for (const restaurant of storedRestaurants) {
+        if (restaurant.id === restaurantId) {
             return res.render('restaurants-detail', { restaurant: restaurant });
         }
     }
-})
+
+    // 페이지를 찾을 수 없는 경우 반환하는 페이지, 위의 for룹에서 return이 안된 경우는 일치하는 id가 없는 경우임
+    return res.render('404');
+});
 
 app.get('/recommend', function (req, res) {
     // const htmlFilePath = path.join(__dirname, 'views', 'recommend.html');
@@ -79,6 +82,8 @@ app.get('/about', function (req, res) {
     res.render('about');
 });
 
-
+app.use(function (req, res) {
+    res.render('404');
+});
 
 app.listen(3000);
