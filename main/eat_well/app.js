@@ -1,3 +1,5 @@
+const uuid = require('uuid');
+
 const fs = require('fs');
 
 const path = require('path');
@@ -29,6 +31,20 @@ app.get('/restaurants', function (req, res) {
     res.render('restaurants', { numberOfRestaurants: storedRestaurants.length, restaurants: storedRestaurants });
 });
 
+app.get('/restaurants/:id', function (req, res) {
+    const restaurantId = req.params.id;
+    const filePath = path.join(__dirname, 'data', 'restaurants.json'); // data 폴더의 json 폴더의 경로를 가져온다
+
+    const fileData = fs.readFileSync(filePath); // json 파일이 있는 경로로 가서 해당 파일의 내용을 읽는다
+    const storedRestaurants = JSON.parse(fileData); // 해당 파일의 내용을 json 형식으로 변환하여 저장한다.
+
+    for(const restaurant of storedRestaurants){
+        if(restaurant.id === restaurantId){
+            return res.render('restaurants-detail', { restaurant: restaurant });
+        }
+    }
+})
+
 app.get('/recommend', function (req, res) {
     // const htmlFilePath = path.join(__dirname, 'views', 'recommend.html');
     // res.sendFile(htmlFilePath);
@@ -37,6 +53,8 @@ app.get('/recommend', function (req, res) {
 
 app.post('/recommend', function (req, res) {
     const restaurant = req.body;
+    restaurant.id = uuid.v4();
+
     const filePath = path.join(__dirname, 'data', 'restaurants.json');
 
     const fileData = fs.readFileSync(filePath);

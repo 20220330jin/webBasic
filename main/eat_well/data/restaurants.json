@@ -1,23 +1,10 @@
 [
     {
-        "name": "Test",
-        "address": "Test st",
-        "cuisine": "test",
-        "website": "http://mytest.com",
-        "description": "test"
-    },
-    {
-        "name": "test2",
-        "address": "test 2 st",
+        "name": "Tuna Friend",
+        "address": "Podown, Anyang",
         "cuisine": "Korean",
         "website": "https://mytest.com",
-        "description": "Korean"
-    },
-    {
-        "name": "test3",
-        "address": "test3",
-        "cuisine": "test3",
-        "website": "https://mytest.com",
-        "description": "test3"
+        "description": "delicious",
+        "id": "45717400-5437-4497-a5ea-99512fa97c8d"
     }
 ]
