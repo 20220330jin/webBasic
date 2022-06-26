@@ -45,7 +45,7 @@ app.get('/restaurants/:id', function (req, res) {
     }
 
     // 페이지를 찾을 수 없는 경우 반환하는 페이지, 위의 for룹에서 return이 안된 경우는 일치하는 id가 없는 경우임
-    return res.render('404');
+    return res.status(404).render('404');
 });
 
 app.get('/recommend', function (req, res) {
@@ -82,8 +82,14 @@ app.get('/about', function (req, res) {
     res.render('about');
 });
 
+// 404 error handler
 app.use(function (req, res) {
-    res.render('404');
+    res.status(404).render('404');
 });
+
+// 500 error handler
+app.use(function(error, req, res, next){
+    res.status(500).render('500');
+})
 
 app.listen(3000);
